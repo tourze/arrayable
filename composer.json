@@ -1,13 +1,13 @@
 {
-    "name": "tourze/arrayable",
-    "description": "A common arrayable interface",
-    "license": "MIT",
-    "require": {
-        "php": "^8.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "Tourze\\Arrayable\\": "src"
-        }
+  "name": "tourze/arrayable",
+  "description": "A common arrayable interface",
+  "license": "MIT",
+  "require": {
+    "php": "^8.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tourze\\Arrayable\\": "src"
     }
+  }
 }
