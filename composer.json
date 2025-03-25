@@ -8,6 +8,7 @@
   "require-dev": {
     "phpunit/phpunit": "^10.0"
   },
+  "license": "MIT",
   "autoload": {
     "psr-4": {
       "Tourze\\Arrayable\\": "src/"
