@@ -1,36 +1,36 @@
-# Arrayable Interface
+# Arrayable 接口
 
-[![Latest Version](https://img.shields.io/packagist/v/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
-[![PHP Version](https://img.shields.io/packagist/php-v/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
-[![Total Downloads](https://img.shields.io/packagist/dt/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
-[![License](https://img.shields.io/packagist/l/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
+[![最新版本](https://img.shields.io/packagist/v/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
+[![PHP 版本](https://img.shields.io/packagist/php-v/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
+[![总下载量](https://img.shields.io/packagist/dt/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
+[![许可证](https://img.shields.io/packagist/l/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
 
-A collection of interfaces for converting objects to arrays in different contexts.
+一组用于在不同场景下将对象转换为数组的接口集合。
 
-## Features
+## 特性
 
-- Provides a standardized way to convert objects to arrays
-- Includes specialized interfaces for different use cases (Admin, API, Plain)
-- Simple implementation with no dependencies
-- Fully typed with PHP 8.1+ generics support
+- 提供将对象转换为数组的标准化方式
+- 包含针对不同使用场景的专用接口（管理后台、API、简单数组）
+- 简单实现，无依赖
+- 完全支持 PHP 8.1+ 泛型类型
 
-## Installation
+## 安装
 
 ```bash
 composer require tourze/arrayable
 ```
 
-## Interfaces
+## 接口
 
 ### Arrayable
 
-The base interface for converting objects to arrays.
+将对象转换为数组的基础接口。
 
 ```php
 interface Arrayable
 {
     /**
-     * Get the instance as an array.
+     * 获取实例的数组表示
      *
      * @return array<TKey, TValue>
      */
@@ -40,13 +40,13 @@ interface Arrayable
 
 ### AdminArrayInterface
 
-Interface for converting objects to arrays specifically for admin panel usage.
+用于将对象转换为后台管理面板使用的数组的接口。
 
 ```php
 interface AdminArrayInterface
 {
     /**
-     * Return array data for admin interface
+     * 返回后台接口数组数据
      */
     public function retrieveAdminArray(): array;
 }
@@ -54,13 +54,13 @@ interface AdminArrayInterface
 
 ### ApiArrayInterface
 
-Interface for converting objects to arrays specifically for API responses.
+用于将对象转换为 API 响应数组的接口。
 
 ```php
 interface ApiArrayInterface
 {
     /**
-     * Return array data for API response
+     * 返回API数组数据
      */
     public function retrieveApiArray(): array;
 }
@@ -68,19 +68,19 @@ interface ApiArrayInterface
 
 ### PlainArrayInterface
 
-Interface for converting objects to simple one-dimensional arrays.
+用于将对象转换为简单一维数组的接口。
 
 ```php
 interface PlainArrayInterface
 {
     /**
-     * Return a simple one-dimensional array
+     * 返回简单的一维数组
      */
     public function retrievePlainArray(): array;
 }
 ```
 
-## Usage
+## 使用示例
 
 ```php
 use Tourze\Arrayable\Arrayable;
@@ -134,10 +134,10 @@ class User implements Arrayable, AdminArrayInterface, ApiArrayInterface, PlainAr
 }
 ```
 
-## Contributing
+## 贡献
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+欢迎贡献！请随时提交 Pull Request。
 
-## License
+## 许可证
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+MIT 许可证。详情请查看 [许可证文件](LICENSE)。
