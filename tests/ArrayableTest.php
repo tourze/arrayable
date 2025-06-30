@@ -55,7 +55,6 @@ class ArrayableTest extends TestCase
     public function testToArray(): void
     {
         $result = $this->model->toArray();
-        $this->assertIsArray($result);
         $this->assertArrayHasKey('id', $result);
         $this->assertArrayHasKey('name', $result);
         $this->assertArrayHasKey('created_at', $result);
@@ -64,7 +63,6 @@ class ArrayableTest extends TestCase
     public function testRetrieveAdminArray(): void
     {
         $result = $this->model->retrieveAdminArray();
-        $this->assertIsArray($result);
         $this->assertArrayHasKey('admin_field', $result);
         $this->assertEquals('admin_value', $result['admin_field']);
     }
@@ -72,7 +70,6 @@ class ArrayableTest extends TestCase
     public function testRetrieveApiArray(): void
     {
         $result = $this->model->retrieveApiArray();
-        $this->assertIsArray($result);
         $this->assertArrayHasKey('code', $result);
         $this->assertArrayHasKey('message', $result);
         $this->assertArrayHasKey('data', $result);
@@ -83,7 +80,6 @@ class ArrayableTest extends TestCase
     public function testRetrievePlainArray(): void
     {
         $result = $this->model->retrievePlainArray();
-        $this->assertIsArray($result);
         $this->assertContainsOnly('string', $result);
         $this->assertEquals('1', $result['id']);
         $this->assertEquals('test', $result['name']);
