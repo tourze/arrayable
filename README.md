@@ -1,9 +1,13 @@
 # Arrayable Interface
 
+[English](README.md) | [中文](README.zh-CN.md)
+
 [![Latest Version](https://img.shields.io/packagist/v/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
 [![PHP Version](https://img.shields.io/packagist/php-v/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
 [![Total Downloads](https://img.shields.io/packagist/dt/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
 [![License](https://img.shields.io/packagist/l/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/tourze/php-monorepo/ci.yml?style=flat-square)](https://github.com/tourze/php-monorepo/actions)
+[![Code Coverage](https://img.shields.io/codecov/c/github/tourze/php-monorepo?style=flat-square)](https://codecov.io/gh/tourze/php-monorepo)
 
 A collection of interfaces for converting objects to arrays in different contexts.
 
@@ -46,7 +50,7 @@ Interface for converting objects to arrays specifically for admin panel usage.
 interface AdminArrayInterface
 {
     /**
-     * Return array data for admin interface
+     * 返回后台接口数组数据
      */
     public function retrieveAdminArray(): array;
 }
@@ -54,13 +58,13 @@ interface AdminArrayInterface
 
 ### ApiArrayInterface
 
-Interface for converting objects to arrays specifically for API responses.
+Interface for converting objects to arrays specifically for API responses. This interface is typically used for top-level data wrapping and encapsulation.
 
 ```php
 interface ApiArrayInterface
 {
     /**
-     * Return array data for API response
+     * 从使用习惯来讲，应该叫 getApiArray 的，但是为了防止自动序列化出错，我们这里改个名
      */
     public function retrieveApiArray(): array;
 }
@@ -68,13 +72,13 @@ interface ApiArrayInterface
 
 ### PlainArrayInterface
 
-Interface for converting objects to simple one-dimensional arrays.
+Interface for converting objects to simple one-dimensional arrays. When implementing this method, make sure not to include complex objects and try to avoid throwing exceptions.
 
 ```php
 interface PlainArrayInterface
 {
     /**
-     * Return a simple one-dimensional array
+     * 只有一纬层级的数据，实现这个方法时，一定要注意不要加入比较复杂的对象，最好也不要抛出异常
      */
     public function retrievePlainArray(): array;
 }
@@ -106,20 +110,20 @@ class User implements Arrayable, AdminArrayInterface, ApiArrayInterface, PlainAr
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'created_at' => '2024-03-24',
-            'last_login' => '2024-03-24 10:00:00'
+            'last_login' => '2024-03-24 10:00:00',
+            'admin_field' => 'admin_value' // Additional admin-specific fields
         ];
     }
 
     public function retrieveApiArray(): array
     {
         return [
+            'code' => 0,
+            'message' => 'success',
             'data' => [
                 'id' => 2,
                 'name' => 'John Doe',
                 'email' => 'john@example.com'
-            ],
-            'meta' => [
-                'version' => '1.0'
             ]
         ];
     }
@@ -127,8 +131,9 @@ class User implements Arrayable, AdminArrayInterface, ApiArrayInterface, PlainAr
     public function retrievePlainArray(): array
     {
         return [
-            'id' => 2,
-            'name' => 'John Doe'
+            'id' => '2',      // Convert to string for plain array
+            'name' => 'John Doe',
+            'email' => 'john@example.com'
         ];
     }
 }

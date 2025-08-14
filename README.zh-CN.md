@@ -1,9 +1,13 @@
 # Arrayable 接口
 
+[English](README.md) | [中文](README.zh-CN.md)
+
 [![最新版本](https://img.shields.io/packagist/v/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
 [![PHP 版本](https://img.shields.io/packagist/php-v/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
 [![总下载量](https://img.shields.io/packagist/dt/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
-[![许可证](https://img.shields.io/packagist/l/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
+[![License](https://img.shields.io/packagist/l/tourze/arrayable.svg?style=flat-square)](https://packagist.org/packages/tourze/arrayable)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/tourze/php-monorepo/ci.yml?style=flat-square)](https://github.com/tourze/php-monorepo/actions)
+[![Code Coverage](https://img.shields.io/codecov/c/github/tourze/php-monorepo?style=flat-square)](https://codecov.io/gh/tourze/php-monorepo)
 
 一组用于在不同场景下将对象转换为数组的接口集合。
 
@@ -54,13 +58,13 @@ interface AdminArrayInterface
 
 ### ApiArrayInterface
 
-用于将对象转换为 API 响应数组的接口。
+用于将对象转换为 API 响应数组的接口。一般这个接口返回的数据，只在最外层使用和封装。
 
 ```php
 interface ApiArrayInterface
 {
     /**
-     * 返回API数组数据
+     * 从使用习惯来讲，应该叫 getApiArray 的，但是为了防止自动序列化出错，我们这里改个名
      */
     public function retrieveApiArray(): array;
 }
@@ -68,13 +72,13 @@ interface ApiArrayInterface
 
 ### PlainArrayInterface
 
-用于将对象转换为简单一维数组的接口。
+用于将对象转换为简单一维数组的接口。实现这个方法时，一定要注意不要加入比较复杂的对象，最好也不要抛出异常。
 
 ```php
 interface PlainArrayInterface
 {
     /**
-     * 返回简单的一维数组
+     * 只有一纬层级的数据，实现这个方法时，一定要注意不要加入比较复杂的对象，最好也不要抛出异常
      */
     public function retrievePlainArray(): array;
 }
@@ -106,20 +110,20 @@ class User implements Arrayable, AdminArrayInterface, ApiArrayInterface, PlainAr
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'created_at' => '2024-03-24',
-            'last_login' => '2024-03-24 10:00:00'
+            'last_login' => '2024-03-24 10:00:00',
+            'admin_field' => 'admin_value' // 后台管理专用字段
         ];
     }
 
     public function retrieveApiArray(): array
     {
         return [
+            'code' => 0,
+            'message' => 'success',
             'data' => [
                 'id' => 2,
                 'name' => 'John Doe',
                 'email' => 'john@example.com'
-            ],
-            'meta' => [
-                'version' => '1.0'
             ]
         ];
     }
@@ -127,8 +131,9 @@ class User implements Arrayable, AdminArrayInterface, ApiArrayInterface, PlainAr
     public function retrievePlainArray(): array
     {
         return [
-            'id' => 2,
-            'name' => 'John Doe'
+            'id' => '2',      // 为简单数组转换为字符串
+            'name' => 'John Doe',
+            'email' => 'john@example.com'
         ];
     }
 }

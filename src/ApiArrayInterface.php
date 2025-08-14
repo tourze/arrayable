@@ -8,6 +8,10 @@ namespace Tourze\Arrayable;
  * 返回API数组数据
  * 一般这个接口返回的数据，只在最外层使用和封装
  */
+/**
+ * @template TKey of array-key
+ * @template TValue
+ */
 interface ApiArrayInterface
 {
     /**

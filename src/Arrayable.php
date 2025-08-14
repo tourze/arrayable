@@ -11,7 +11,7 @@ namespace Tourze\Arrayable;
 interface Arrayable
 {
     /**
-     * Get the instance as an array.
+     * 将实例转换为数组
      *
      * @return array<TKey, TValue>
      */

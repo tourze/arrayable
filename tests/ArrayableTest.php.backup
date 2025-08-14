@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tourze\Arrayable\Tests;
 
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tourze\Arrayable\Arrayable;
 
@@ -11,12 +12,12 @@ use Tourze\Arrayable\Arrayable;
  * @internal
  */
 #[CoversClass(className: Arrayable::class)]
-#[\PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses]
-final class ArrayableTest extends \SymfonyTestingFramework\Test\AbstractIntegrationTestCase
+#[\PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses]final class ArrayableTest extends \SymfonyTestingFramework\Test\AbstractIntegrationTestCase
 {
     private TestModel $model;
 
-    protected function onSetUp(): void {
+    protected function onSetUp(): void
+    {
         $this->model = new TestModel();
     }
 

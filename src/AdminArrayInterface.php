@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Tourze\Arrayable;
 
+/**
+ * @template TKey of array-key
+ * @template TValue
+ */
 interface AdminArrayInterface
 {
     /**
