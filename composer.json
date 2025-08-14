@@ -20,5 +20,8 @@
     "psr-4": {
       "Tourze\\Arrayable\\Tests\\": "tests/"
     }
+  },
+  "extra": {
+    "release-version": "0.1.*"
   }
 }

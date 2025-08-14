@@ -16,7 +16,8 @@ final class ArrayableTest extends TestCase
 {
     private TestModel $model;
 
-    protected function onSetUp(): void {
+    protected function setUp(): void
+    {
         $this->model = new TestModel();
     }
 
