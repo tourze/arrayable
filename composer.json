@@ -1,5 +1,5 @@
 {
-  "name": "tourze/arrayable",
+  "name": "tourze/order-contracts",
   "description": "Arrayable interfaces for PHP",
   "type": "library",
   "homepage": "https://github.com/tourze/arrayable",
@@ -13,12 +13,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Tourze\\Arrayable\\": "src/"
+      "Tourze\\OrderContracts\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Tourze\\Arrayable\\Tests\\": "tests/"
+      "Tourze\\OrderContracts\\Tests\\": "tests/"
     }
   },
   "extra": {
