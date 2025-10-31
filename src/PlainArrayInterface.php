@@ -13,5 +13,8 @@ namespace Tourze\Arrayable;
  */
 interface PlainArrayInterface
 {
+    /**
+     * @return array<TKey, TValue>
+     */
     public function retrievePlainArray(): array;
 }

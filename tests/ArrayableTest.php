@@ -11,7 +11,7 @@ use Tourze\Arrayable\Arrayable;
 /**
  * @internal
  */
-#[CoversClass(className: Arrayable::class)]
+#[CoversClass(Arrayable::class)]
 final class ArrayableTest extends TestCase
 {
     private TestModel $model;

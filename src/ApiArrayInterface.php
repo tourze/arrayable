@@ -16,6 +16,8 @@ interface ApiArrayInterface
 {
     /**
      * 从使用习惯来讲，应该叫 getApiArray 的，但是为了防止自动序列化出错，我们这里改个名
+     *
+     * @return array<TKey, TValue>
      */
     public function retrieveApiArray(): array;
 }
